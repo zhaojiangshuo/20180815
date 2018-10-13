@@ -1,0 +1,273 @@
+swiper 常用命令：
+Swiper 初始化：
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">slider1</div>
+    <div class="swiper-slide">slider2</div>
+    <div class="swiper-slide">slider3</div>
+  </div>
+</div>
+<script> 
+var mySwiper = new Swiper('.swiper-container', {
+	autoplay: 5000,//可选选项，自动滑动
+})
+</script>
+
+
+
+
+initialSlide ：
+设定初始化时slide的索引
+默认值是索引0  
+initialSlide参数：
+类型：number
+方法示例：
+<script language="javascript"> 
+var mySwiper = new Swiper('.swiper-container',{
+initialSlide :2,
+})
+</script>
+
+
+
+
+direction ：
+slide的滑动方向，可设置水平或者垂直滑动
+horizontal是横向滑动
+vertical是纵向滑动
+默认值是是横向滑动
+值是一个字符串数据类型
+方法示例：
+<script> 
+var mySwiper = new Swiper('.swiper-container',{
+direction : 'vertical',
+})
+</script>
+
+
+
+
+speed ： 
+slide滑动的速度，自动滑动开始到结束的时间(单位ms)
+speed参数：
+类型：number默认：300举例：1000
+方法示例：
+<script> 
+var mySwiper = new Swiper('.swiper-container',{
+autoplay : 3000,
+speed:300,
+})
+</script>
+
+
+
+
+
+autoplay：
+自动切换的时间间隔（单位ms），不设定该参数slide不会自动切换。
+用户操作后autoplay停止还可以在某个slide上设置单独的停留时间，例<div class="swiper-slide" data-swiper-autoplay="2000">
+autoplay参数：
+类型：number默认：0举例：5000
+方法示例：
+<script>
+var mySwiper = new Swiper('.swiper-container',{
+autoplay : 5000,
+}
+
+//反方向自动切换简单示例
+var mySwiper = new Swiper('.swiper-container',{
+loop : true,
+})
+setInterval("mySwiper.slidePrev()", 2000);
+</script>
+
+
+autoplayDisableOnInteraction
+用户操作swiper之后，是否禁止autoplay。默认为true：停止  false操作之后不会停止每次都会重启autoplay
+操作包括触碰、拖动、点击paginination等
+autoplayDisableOninteraction参数：
+类型：boolean
+方法示例：
+<script> 
+var mySwiper = new Swiper('.swiper-container',{
+autoplay : 5000,
+autoplayDisableOnInteraction : false,
+})
+</script>
+
+
+
+autoplayStopOnLast
+如果设置为true，当切换到最后一个slide时停止自动切换。（loop模式下无效）。
+autoplayStopOnLast参数：
+类型：boolean默认：false
+方法示例：
+<script> 
+var mySwiper = new Swiper('.swiper-container',{
+autoplay : 3000,
+autoplayStopOnLast : true,
+})
+</script>
+
+
+
+
+nextButton
+前进按钮的css选择器或HTML元素。
+nextButton参数：
+类型：string / HTMLElement默认：null
+修改箭头颜色：修改箭头的颜色：除了默认的蓝色箭头外，Swiper还内置了白色   >     和黑色   >     两种箭头颜色，如需其他颜色可更改css样式中的fill%3D'%23007aff'详见下方代码示例。后退按钮同效。
+方法示例：
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+
+<script language="javascript"> 
+var mySwiper = new Swiper('.swiper-container',{
+prevButton:'.swiper-button-prev',
+nextButton:'.swiper-button-next',
+})
+</script>
+
+<!-- 修改箭头颜色示范 -->
+<div class="swiper-button-next swiper-button-white"></div> <!-- 白色 -->
+<div class="swiper-button-next swiper-button-black"></div> <!-- 黑色 -->
+<style>
+/*Swiper原样式 */
+.swiper-button-next{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");}
+/*改变了颜色和加粗的样式*/
+.swiper-button-next{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L5%2C44l-4.2-4.2L18.6%2C22L0.8%2C4.2L5%2C0z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");}
+</style>
+
+
+
+
+noSwiping
+设为true时，可以在slide上（或其他元素）增加类名'swiper-no-swiping'，使该slide无法拖动，希望文字被选中时可以考虑使用。
+该类名可通过noSwipingClass修改。
+noSwiping参数：
+类型：boolean默认：true举例：false
+方法示例：
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			slider1</div>
+		<div class="swiper-slide swiper-no-swiping">
+			slider2</div>
+		<div class="swiper-slide">
+			slider3</div>
+	</div>
+</div>
+<script language="javascript"> 
+var mySwiper = new Swiper('.swiper-container',{
+noSwiping : true,
+})
+</script>
+
+
+
+
+
+
+
+noSwipingClass
+不可拖动块的类名，当noSwiping设置为true时，并且在slide（或其他元素）加上此类名，目标将无法触摸拖动。
+noSwipingClass参数：
+类型：string默认：swiper-no-swiping  参数：stop-swiping是触摸无效的意思
+方法示例：
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			slider1</div>
+		<div class="swiper-slide stop-swiping">
+			slider2</div>
+		<div class="swiper-slide">
+			slider3</div>
+	</div>
+</div>
+<script language="javascript"> 
+var mySwiper = new Swiper('.swiper-container',{
+noSwiping : true,
+noSwipingClass : 'stop-swiping',
+})
+</script>
+
+
+
+
+keyboardControl
+是否开启键盘控制Swiper切换。
+设置为true时，能使用键盘方向键控制slide滑动。
+keyboardControl参数：
+类型：boolean默认：false
+开启了这个选项，现在键盘上的 < 和 > 可以控制Swiper
+方法示例：
+<script language="javascript"> 
+var mySwiper = new Swiper('.swiper-container',{
+keyboardControl : true,
+})
+</script>
+
+
+
+
+
+mousewheelControl
+是否开启鼠标控制Swiper切换。
+设置为true时，能使用鼠标滚轮控制slide滑动。
+mousewheelControl参数：
+类型：boolean默认：false
+开启了这个选项，现在鼠标的滚轮可以控制Swiper，先点击一下Swiper来获取目标
+方法示例：
+<script language="javascript"> 
+var mySwiper = new Swiper('.swiper-container',{
+mousewheelControl : true,
+})
+</script>
+
+
+
+
+scrollbarSnapOnRelease
+如果设置为true，释放滚动条时slide自动贴合。
+scrollbarSnapOnRelease参数：
+类型：boolean默认：false
+方法示例：
+<script type="text/javascript">
+var mySwiper = new Swiper('.swiper-container',{
+scrollbar:'.swiper-scrollbar',
+scrollbarHide : false,
+scrollbarDraggable : true ,
+scrollbarSnapOnRelease : true ,
+  }); 
+</script>
+
+
+
+
+
+preventClicks
+当swiper在触摸时阻止默认事件（preventDefault），用于防止触摸时触发链接跳转。
+preventClicks参数：
+类型：boolean默认：true
+方法示例：
+<script language="javascript"> 
+var mySwiper = new Swiper('.swiper-container',{
+preventClicks : false,//默认true
+})
+</script>	
+
+
+
+
+
+
+
+
+
